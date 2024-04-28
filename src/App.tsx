@@ -6,6 +6,8 @@ import { Home } from './pages/Home.tsx/';
 import { RequireAuth } from './context/auth/RequiredAuth';
 import { useContext } from 'react';
 import { AuthContext } from './context/auth/AuthContext';
+import { Register } from './pages/Register';
+import { ForgotPassword } from './pages/ForgotPassword';
 
 
 function App() {
@@ -32,6 +34,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Private" element={<RequireAuth><Private /></RequireAuth>} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgotPassword" element={<ForgotPassword />} />
+        {/* Rota padrão para a página inicial */}
+        <Route path="*" element={<Home />} />
       </Routes>
     </div>
   )

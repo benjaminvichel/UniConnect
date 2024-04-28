@@ -34,18 +34,30 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
         return false;
     }
 
+    const register = async (name: string, email: string, password: string) => {
+        const data = await api.register(name, email, password);
+        if (data.user && data.token) {
+            setUser(data.user);
+            setToken(data.token);
+            return true;
+        }
+        return false;
+    };
+
     const signout = async () => {
         setUser(null);
         setToken('');
         // await api.logout();
     }
 
+
+
     const setToken = (token: string) => {
         localStorage.setItem('authToken', token);
     }
 
     return (
-        <AuthContext.Provider value={{ user, signin, signout }}>
+        <AuthContext.Provider value={{ user, signin, signout, register }}>
             {children}
         </AuthContext.Provider>
     )

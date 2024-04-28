@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 const api = axios.create({
-    baseURL: 'process.env._REACT_APP_API'
+    baseURL: import.meta.env.VITE_API
 });
 
 export const useApi = () => ({
@@ -20,7 +20,16 @@ export const useApi = () => ({
             user: { id: 3, name: 'José', email: 'jose@gmail.com' },
             token: '123456'
         }
-        const response = await api.post('/signin', { email, password });
+        const response = await api.post('/auth/login', { email, password });
+        return response.data;
+    },
+
+    register: async (name: string, email: string, password: string) => {
+        return {
+            user: { id: 3, name: 'José', email: 'jose@gmail.com' },
+            token: '123456'
+        }
+        const response = await api.post('/register', { name, email, password });
         return response.data;
     },
 
