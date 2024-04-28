@@ -1,0 +1,4 @@
+npm install react-router-dom axios
+
+importar no main:  import { BrowserRouter } from 'react-router-dom'
+-envelopar o App com o BrowserRouter para o App ter suporte a rotas.
