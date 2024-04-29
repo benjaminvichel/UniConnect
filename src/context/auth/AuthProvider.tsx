@@ -3,10 +3,12 @@ import { useEffect, useState } from "react"
 import { AuthContext } from "./AuthContext"
 import { useApi } from "../../hooks/useApi";
 import { User } from "../../types/User";
+import { Job } from "../../types/Jobs";
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
     const [user, setUser] = useState<User | null>(null);
+    const [jobs, setJobs] = useState<Job[] | null>([]);
     const api = useApi();
 
     //validar token
@@ -44,9 +46,19 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
         return false;
     };
 
+    const getJobsList = async () => {
+        const data = await api.getJobsList();
+        if (data.jobs) {
+            setJobs(data.jobs);
+            return true;
+        }
+        return false;
+    }
+
     const signout = async () => {
         setUser(null);
         setToken('');
+        setJobs([]);
         // await api.logout();
     }
 
@@ -57,7 +69,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ user, signin, signout, register }}>
+        <AuthContext.Provider value={{ user, signin, signout, register, jobs, getJobsList }}>
             {children}
         </AuthContext.Provider>
     )

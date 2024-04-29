@@ -12,7 +12,7 @@ export const useApi = () => ({
         return {
             user: { id: 3, name: 'José', email: 'jose@gmail.com' }
         }
-        const response = await api.post('/validate', { token });
+        const response = await api.post('/auth/userdata', { token });
         return response.data;
     },
     signin: async (email: string, password: string) => {
@@ -21,6 +21,7 @@ export const useApi = () => ({
             token: '123456'
         }
         const response = await api.post('/auth/login', { email, password });
+        console.log(response.data);
         return response.data;
     },
 
@@ -29,9 +30,22 @@ export const useApi = () => ({
             user: { id: 3, name: 'José', email: 'jose@gmail.com' },
             token: '123456'
         }
-        const response = await api.post('/register', { name, email, password });
+        const response = await api.post('/auth/signup', { name, email, password });
         return response.data;
     },
+
+    getJobsList: async () => {
+        return {
+            jobs: [
+                { id: 1, text: 'Teste do Jobs1', workStyle: 'Na minha casa4' },
+                { id: 2, text: 'Teste do Jobs2', workStyle: 'Remoto' },
+                { id: 3, text: 'Teste do Jobs3', workStyle: 'Presencial' }
+            ]
+        };
+        const response = await api.get('/jobs');
+        return { jobs: response.data };
+    },
+
 
     logout: async () => {
         // return {
