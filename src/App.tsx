@@ -8,7 +8,8 @@ import { useContext } from 'react';
 import { AuthContext } from './context/auth/AuthContext';
 import { Register } from './pages/Register';
 import { ForgotPassword } from './pages/ForgotPassword';
-
+import { Curriculum } from './pages/Curriculum';
+import { JobsForm } from './components/JobsForm';
 
 function App() {
   const auth = useContext(AuthContext);
@@ -23,19 +24,29 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Header do Site </h1>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/Private">Private</Link>
-          {auth.user && <button onClick={handleLogout}>Sair</button>}
+        <nav className="navigation">
+          <div className="container-x1">
+            <Link className="container-x1-logo" to="/">Home</Link>
+            <div className="container-x2">
+              <ul>
+                <Link to="/UniConnect/Private">Private</Link>
+                <Link to={"/UniConnect/Curriculum"}>Curriculo</Link>
+              </ul>
+              <div className="container-x3">
+                {auth.user && <button onClick={handleLogout}>Sair</button>}
+              </div>
+            </div>
+          </div>
         </nav>
       </header>
       <hr />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Private" element={<RequireAuth><Private /></RequireAuth>} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/forgotPassword" element={<ForgotPassword />} />
+        <Route path="/UniConnect/Private" element={<RequireAuth><Private /></RequireAuth>} />
+        <Route path="/UniConnect/Register" element={<Register />} />
+        <Route path="/UniConnect/ForgotPassword" element={<ForgotPassword />} />
+        <Route path='/UniConnect/Curriculum' element={<RequireAuth><Curriculum /></RequireAuth>} />
+        <Route path='/UniConnect/JobsForm' element={<JobsForm />}></Route>
         {/* Rota padrão para a página inicial */}
         <Route path="*" element={<Home />} />
       </Routes>
