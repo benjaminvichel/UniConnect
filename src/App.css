@@ -1,5 +1,50 @@
 .App {
   text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+header {
+  background-color: rgb(140, 209, 209);
+  border-bottom: 1px solid black;
+}
+
+/*navigation*/
+.navigation {}
+
+.container-x1 {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
+
+}
+
+.container-x1 .container-x1-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.container-x2 {
+  display: flex;
+  flex-grow: 0.9;
+  justify-content: space-between;
+
+}
+
+.container-x2 ul a {
+  margin-left: 30px;
+}
+
+.container-x3 {
+  display: flex;
+  flex-grow: 0.01;
+}
+
+.container-x3 button {
+  background-color: transparent;
 }
 
 nav a {

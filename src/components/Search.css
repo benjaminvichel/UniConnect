@@ -1,0 +1,11 @@
+.search_app {
+    width: 743px;
+    height: 110px;
+    flex-shrink: 0;
+}
+
+.search_input {
+    width: 150px;
+    height: 64px;
+    flex-shrink: 0;
+}
