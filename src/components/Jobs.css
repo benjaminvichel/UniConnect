@@ -1,11 +1,64 @@
-.jobs-list {}
+* {
+    box-sizing: border-box;
+}
+
+.jobs-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
 
 .job {
-    box-sizing: border-box;
-    background-color: aqua;
-    width: 800px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     border: 1px solid black;
-    padding: 10px;
-    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 7px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.job_title,
+.job_promoter,
+.job_state,
+.job_salary {
+    display: flex;
+    max-width: 100%;
+    max-height: 33%;
+    overflow: hidden;
+    word-wrap: break-word;
+    align-items: start;
+
+    border-radius: 7px;
+}
+
+.job_title h3,
+.job_promoter p,
+.job_state p,
+.job_salary p,
+.job_jobRemove button {
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+.job_title h3 {
+    font-size: 20px;
+}
+
+.job_promoter p {
+    font-size: 15px;
+}
+
+.job_state p {
+    font-size: 15px;
+}
+
+.job_jobRemove {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
 }

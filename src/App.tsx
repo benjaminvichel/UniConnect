@@ -11,6 +11,7 @@ import { ForgotPassword } from './pages/ForgotPassword';
 import { Curriculum } from './pages/Curriculum';
 import { JobsForm } from './components/JobsForm';
 
+
 function App() {
   const auth = useContext(AuthContext);
   const navigate = useNavigate();

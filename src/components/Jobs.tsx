@@ -17,16 +17,12 @@ export const Jobs = ({ searchFilter, stateSelected }: { searchFilter: string, st
             <h2>Lista Jobs</h2>
             <div className='jobs-list'>
                 {auth.jobs && filteredJobs.map(job => (
-                    <div key={job.id} className='job'>
-                        <h3>{job.title}</h3>
-                        <p>descrição: {job.text}</p>
-                        <p>Modalidade do trabalho: {job.workStyle}</p>
-                        <p>promoter: {job.promoter}</p>
-                        <p>salario:{job.salary}</p>
-                        <p>cidade: {job.city}</p>
-                        <p>estado: {job.state.id}</p>
-                        <p>{job.state.nome}</p>
-                        <JobsRemove jobId={job.id} />
+                    <div key={job.id} className='job' >
+                        <div className="job_title"><h3>{job.title}</h3></div>
+                        <div className="job_promoter"><p>Empresa: {job.promoter}</p></div>
+                        <div className="job_salary"><p>Salário: {job.salary}</p></div>
+                        <div className="job_state"><p>Estado: {job.state.nome}</p></div>
+                        <div className="job_jobRemove"><JobsRemove jobId={job.id} /></div>
                     </div>
                 ))}
             </div>

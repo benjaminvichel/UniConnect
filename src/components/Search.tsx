@@ -11,11 +11,16 @@ export const Search = ({ setSearchFilter, setStateSelected }: { setSearchFilter:
 
     return (
         <div className="search_app">
-            <h2>Search</h2>
-            <div className="search_input"><StateSelect setStateSelected={setStateSelected} /></div>
-            <div className="search_input"><input type="text" placeholder="Pesquisar..." onChange={handleInputChange} /></div>
-            <div className="search_input"></div>
-            <div className="search_input"></div>
+            <div className="search_appContainer">
+                {/*<div className="search_appContainer_search"><h2>Search</h2></div> */}
+                <div className="search_appContainer_inputs">
+                    <div className="search_selectState"><StateSelect setStateSelected={setStateSelected} /></div>
+                    <div className="vertical-line"></div>
+                    <div className="search_inputText"><input type="text" placeholder="Pesquisar..." onChange={handleInputChange} /></div>
+                </div>
+
+            </div>
+
         </div>
 
     )

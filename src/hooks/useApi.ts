@@ -15,9 +15,9 @@ const apiStates = axios.create({
 export const useApi = () => ({
     // Métodos para a back-end API
     validateToken: async (token: string) => {//working
-        return {
-            user: { id: 3, name: 'José', email: 'jose@gmail.com' }
-        }
+        // return {
+        //     user: { id: 3, name: 'José', email: 'jose@gmail.com' }
+        // }
         const headers = {
             Authorization: `${token}`,
             'Content-Type': 'application/json', // Especificando o tipo de conteúdo como JSON
@@ -27,10 +27,10 @@ export const useApi = () => ({
     },
     signin: async (email: string, password: string) => {//working
 
-        return {
-            user: { name: 'José', id: 3, email: 'jose@gmail.com' },
-            token: '123456sadwd'
-        }
+        // return {
+        //     user: { name: 'José', id: 3, email: 'jose@gmail.com' },
+        //     token: '123456sadwd'
+        // }
         // return {
         //     user: {   token: '123456',id: 3, name: 'José', email: 'jose@gmail.com' },
 
@@ -52,9 +52,50 @@ export const useApi = () => ({
     getJobsList: async (token: string) => {
         // return {
         //     jobs: [
-        //         { id: 1, text: 'minha casa 2', workStyle: 'Na minha casa4', state: { id: 11, sigla: 'AQ', nome: 'Rio de Janeiro' } },
-        //         { id: 6, text: 'local de trabalho50', workStyle: 'Remoto', state: { id: 11, sigla: 'NSDF', nome: 'Alguma coisa' } },
-        //         { id: 7, text: 'Teste do Jobs3', workStyle: 'Presenciall', state: { id: 3, sigla: 'ASDAS', nome: 'Porto Alegre' } }
+        //         {
+        //             id: 1, title: 'trabalho de cozinheira', text: 'venha se especializar na cozinha da sua Maria',
+        //             employmentType: 'PRESENCIAL', description: 'aqui na casa da maria vo...',
+        //             promoter: 'casa da maria empresas',
+        //             salary: 1500,
+        //             city: 'gramado',
+        //             state: { id: 11, sigla: 'RJ', nome: 'rio de janeiro' }
+        //         },
+        //         {
+        //             id: 2, title: 'trbvalho de pedreiro', text: 'venha se especializar como pedreiro',
+        //             employmentType: 'PRESENCIAL', description: 'como pedreiro voce...',
+        //             promoter: 'construtora pedreira',
+        //             salary: 2000,
+        //             city: 'gramado',
+        //             state: { id: 11, sigla: 'PR', nome: 'Parana' }
+        //         },
+        //         {
+        //             id: 3, title: 'trbvalho de pedreiro', text: 'venha se especializar como pedreiro',
+        //             employmentType: 'PRESENCIAL', description: 'como pedreiro voce...',
+        //             promoter: 'construtora pedreira',
+        //             salary: 2000,
+        //             city: 'gramado',
+        //             state: { id: 11, sigla: 'RS', nome: 'Rio grande do Sul' }
+        //         },
+
+        //         {
+        //             id: 4, title: 'trbvalho de pedreiro', text: 'venha se especializar como pedreiro',
+        //             employmentType: 'PRESENCIAL', description: 'como pedreiro voce...',
+        //             promoter: 'construtora pedreira',
+        //             salary: 2000,
+        //             city: 'gramado',
+        //             state: { id: 11, sigla: 'RS', nome: 'Rio grande do Sul' }
+        //         },
+
+        //         {
+        //             id: 5, title: 'trbvalho de pedreiro', text: 'venha se especializar como pedreiro',
+        //             employmentType: 'PRESENCIAL', description: 'como pedreiro voce...',
+        //             promoter: 'construtora pedreira',
+        //             salary: 2000,
+        //             city: 'gramado',
+        //             state: { id: 11, sigla: 'RS', nome: 'Rio grande do Sul' }
+        //         },
+
+
         //     ]
         // };
         const headers = {
@@ -92,10 +133,10 @@ export const useApi = () => ({
     },
     //need implementation
     logout: async () => {
-        return {
-            user: { id: null, name: null, email: null },
-            token: ''
-        }
+        // return {
+        //     user: { id: null, name: null, email: null },
+        //     token: ''
+        // }
 
         const response = await api.post('/logout');
         return response.data;
