@@ -8,7 +8,7 @@ import './index.css';
 export const Private = () => {
     const auth = useContext(AuthContext);
     const [searchFilter, setSearchFilter] = useState('');
-    const [stateSelected, setStateSelected] = useState<number | null>(null);
+    const [stateSelected, setStateSelected] = useState<{ id: number | null, name: string | null }>({ id: null, name: null });
 
     useEffect(() => {
         auth.getJobsList();

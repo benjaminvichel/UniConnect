@@ -14,10 +14,10 @@ export enum EmploymentType {
 export type Job = {
     id: number;
     title: string;
-    text: string;
+    text: string; //brief summary of the job
     workStyle: WorkStyle;
     employmentType: EmploymentType;
-    description: string;
+    description: string; //job description
     promoter: string;
     salary: string;
     city: string;

@@ -2,13 +2,17 @@
     box-sizing: border-box;
 }
 
+#listajobs {
+    text-align: center;
+}
+
 .jobs-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
 }
 
-.job {
+.jobLink {
     width: 300px;
     height: 300px;
     border: 1px solid black;
@@ -19,6 +23,11 @@
     margin-right: 20px;
     margin-left: 20px;
     margin-bottom: 20px;
+    text-decoration: none;
+}
+
+.jobLink:hover {
+    background-color: #f0f0f0;
 }
 
 .job_title,
@@ -31,15 +40,13 @@
     overflow: hidden;
     word-wrap: break-word;
     align-items: start;
-
     border-radius: 7px;
 }
 
 .job_title h3,
 .job_promoter p,
 .job_state p,
-.job_salary p,
-.job_jobRemove button {
+.job_salary p {
     margin-left: 5px;
     font-size: 15px;
 }
@@ -54,11 +61,4 @@
 
 .job_state p {
     font-size: 15px;
-}
-
-.job_jobRemove {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 5px;
 }

@@ -16,7 +16,7 @@ export const useApi = () => ({
     // Métodos para a back-end API
     validateToken: async (token: string) => {//working
         // return {
-        //     user: { id: 3, name: 'José', email: 'jose@gmail.com' }
+        //     user: { id: 3, name: 'José', email: 'jose@gmail.com', jobs: [1, 3] }
         // }
         const headers = {
             Authorization: `${token}`,
@@ -37,6 +37,15 @@ export const useApi = () => ({
         // }
         const response = await api.post('/auth/login', { email, password });
         console.log(response.data);
+        return response.data;
+    },
+
+    uploadImage: async (image: File, token: string) => {
+        const headers = {
+            Authorization: `${token}`,
+            'Content-Type': 'application/json', // Especificando o tipo de conteúdo como JSON
+        };
+        const response = await api.post('/auth/profilepicture', { image }, { headers });
         return response.data;
     },
     //working
@@ -69,11 +78,11 @@ export const useApi = () => ({
         //             state: { id: 11, sigla: 'PR', nome: 'Parana' }
         //         },
         //         {
-        //             id: 3, title: 'trbvalho de pedreiro', text: 'venha se especializar como pedreiro',
-        //             employmentType: 'PRESENCIAL', description: 'como pedreiro voce...',
-        //             promoter: 'construtora pedreira',
-        //             salary: 2000,
-        //             city: 'gramado',
+        //             id: 3, title: 'Loja de sapatos', text: 'venha se especializar vendedor',
+        //             employmentType: 'REMOTO', description: 'como vendedor voce...',
+        //             promoter: 'Loja de sapatos',
+        //             salary: 3000,
+        //             city: 'Canela',
         //             state: { id: 11, sigla: 'RS', nome: 'Rio grande do Sul' }
         //         },
 
@@ -103,23 +112,35 @@ export const useApi = () => ({
             'Content-Type': 'application/json', // Especificando o tipo de conteúdo como JSON
         };
         const response = await api.get('/job/list', { headers });
-        console.log(response.data);
         return { jobs: response.data };
     },
-    //working
-    addJob: async (title: string, text: string, workStyle: WorkStyle, employmentType: EmploymentType, description: string, promoter: string, salary: number, city: string, state: number | null, token: string) => {
-        // return true;
 
+    getUserJobsList: async (token: string) => {
         const headers = {
             Authorization: `${token}`,
             'Content-Type': 'application/json', // Especificando o tipo de conteúdo como JSON
         };
-
-        const response = await api.post('/job', { title, text, workStyle, employmentType, description, promoter, salary, city, state }, { headers })
-        console.log('Request payload:', { title, text, workStyle, employmentType, description, promoter, salary, city, state });
-        console.log(response.data);
+        const response = await api.get('/enrollment/list', { headers });
+        return { jobs: response.data };
+    },
+    //working
+    addJob: async (title: string, text: string, workStyle: WorkStyle, employmentType: EmploymentType, description: string, promoter: string, salary: number, city: string, stateId: number | null, stateName: string | null, token: string) => {
+        // return true;
+        const headers = {
+            Authorization: `${token}`,
+            'Content-Type': 'application/json', // Especificando o tipo de conteúdo como JSON
+        };
+        const response = await api.post('/job', { title, text, workStyle, employmentType, description, promoter, salary, city, stateId, stateName }, { headers })
         return response.data;
+    },
 
+    subscribeToJob: async (id: number, token: string) => {
+        const headers = {
+            Authorization: `${token}`,
+            'Content-Type': 'application/json', // Especificando o tipo de conteúdo como JSON
+        };
+        const response = await api.post('/enrollment', { id }, { headers })
+        return response.data;
     },
     //working, bit with post
     removeJob: async (id: number, token: string) => {
@@ -132,13 +153,16 @@ export const useApi = () => ({
         return response.data;
     },
     //need implementation
-    logout: async () => {
+    logout: async (token: string) => {
         // return {
         //     user: { id: null, name: null, email: null },
         //     token: ''
         // }
-
-        const response = await api.post('/logout');
+        const headers = {
+            Authorization: `${token}`,
+            'Content-Type': 'application/json', // Especificando o tipo de conteúdo como JSON
+        };
+        const response = await api.post('/auth/logout', {}, { headers });
         return response.data;
     },
     //working
@@ -150,7 +174,7 @@ export const useApi = () => ({
         // };
 
         const response = await apiStates.get('/estados');
-        // console.log(response.data);
+        console.log(response.data);
         return response.data;
     }
 

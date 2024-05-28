@@ -8,9 +8,13 @@ export type AuthContextType = {
     signin: (email: string, password: string) => Promise<boolean>;
     signout: () => void;
     register: (name: string, email: string, password: string, phone: string, address: string, city: string, state: number) => Promise<boolean>;
+    uploadImage: (image: File) => Promise<boolean>;
     jobs: Job[] | null;
     getJobsList: () => Promise<Job[] | null>;
-    addJob: (title: string, text: string, workStyle: WorkStyle, employmentType: EmploymentType, description: string, promoter: string, salary: number, city: string, state: number | null) => Promise<boolean>;
+    userJobs: Job[] | null;
+    getUserJobsList: () => Promise<Job[] | null>;
+    addJob: (title: string, text: string, workStyle: WorkStyle, employmentType: EmploymentType, description: string, promoter: string, salary: number, city: string, stateId: number | null, stateName: string | null) => Promise<boolean>;
+    subscribeToJob: (id: number) => void;
     removeJob: (id: number) => Promise<boolean>;
     //apiStates
     state: State[] | null;

@@ -15,13 +15,13 @@ export const JobsForm = () => {
     const [promoter, setPromoter] = useState('');
     const [salary, setSalary] = useState<number>(0);
     const [city, setCity] = useState('');
-    const [stateSelected, setStateSelected] = useState<number | null>(null);
+    const [stateSelected, setStateSelected] = useState<{ id: number | null; name: string | null }>({ id: null, name: null });
 
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (!title || !text || !workStyle || !employmentType || !description || !promoter || !salary || !city || !stateSelected) return;
+        if (!title || !text || !workStyle || !employmentType || !description || !promoter || !salary || !city || !stateSelected.id || !stateSelected.name) return;
 
         addJob();
         resetForm();
@@ -36,11 +36,11 @@ export const JobsForm = () => {
         setPromoter('');
         setSalary(0);
         setCity('');
-
+        setStateSelected({ id: null, name: null });
     }
 
     const addJob = async () => {
-        const result = await auth.addJob(title, text, workStyle, employmentType, description, promoter, salary, city, stateSelected);
+        const result = await auth.addJob(title, text, workStyle, employmentType, description, promoter, salary, city, stateSelected.id, stateSelected.name);
         if (result) {
             console.log("Adicionado ao banco de dados!");
         }

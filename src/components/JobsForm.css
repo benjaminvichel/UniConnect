@@ -25,6 +25,10 @@
     flex-direction: column;
 }
 
+.jobsForm_jobsForm h2 {
+    text-align: center;
+}
+
 .jobsForm_form {
     display: flex;
     flex-direction: column;
@@ -51,6 +55,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .jobsForm_formContainer_1City_state {

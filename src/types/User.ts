@@ -8,4 +8,5 @@ export type User = {
     address: string;
     city: string;
     state: State;
+    profilePicture: Uint8Array | null;
 }

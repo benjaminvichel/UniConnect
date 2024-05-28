@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
     const [user, setUser] = useState<User | null>(null);
     const [jobs, setJobs] = useState<Job[] | null>([]);
+    const [userJobs, setUserJobs] = useState<Job[] | null>([]);
     const [state, setState] = useState<State[] | null>([]);
     const [token, setToken] = useState<string>('');
     const api = useApi();
@@ -53,7 +54,19 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
         }
         return false;
     };
+    const uploadImage = async (image: File): Promise<boolean> => {
+        try {
+            // Chamar a função da API para fazer o upload da imagem
+            await api.uploadImage(image, token);
+            // Se o upload for bem-sucedido, retornar true
+            return true;
+        } catch (error) {
+            // Se houver algum erro durante o upload, retornar false
+            console.error('Erro ao enviar imagem:', error);
+            return false;
+        }
 
+    }
     const getJobsList = async (): Promise<Job[] | null> => {
         try {
             const data = await api.getJobsList(token);
@@ -66,14 +79,35 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
             console.error("Erro ao obter a lista de trabalhos:", error);
             return null;
         }
+
     }
-    const addJob = async (title: string, text: string, workStyle: WorkStyle, employmentType: EmploymentType, description: string, promoter: string, salary: number, city: string, state: number | null) => {
-        const data = await api.addJob(title, text, workStyle, employmentType, description, promoter, salary, city, state, token);
+
+    const getUserJobsList = async (): Promise<Job[] | null> => {
+        try {
+            const data = await api.getUserJobsList(token);
+            if (data.jobs) {
+                console.log(data.jobs);
+                setUserJobs(data.jobs); // Substitui os dados existentes pelos novos dados
+                return data.jobs;
+            }
+            return null;
+        } catch (error) {
+            console.error("Erro ao obter a lista de trabalhos do usuário:", error);
+            return null;
+        }
+    }
+
+    const addJob = async (title: string, text: string, workStyle: WorkStyle, employmentType: EmploymentType, description: string, promoter: string, salary: number, city: string, stateId: number | null, stateName: string | null) => {
+        const data = await api.addJob(title, text, workStyle, employmentType, description, promoter, salary, city, stateId, stateName, token);
         if (data) {
             console.log(data);
             return true;
         }
         return false;
+    }
+    const subscribeToJob = async (id: number) => {
+        const data = await api.subscribeToJob(id, token);
+        return data;
     }
 
     const removeJob = async (id: number) => {
@@ -96,18 +130,20 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
         if (data) {
             setState(data);
             return true;
+
         }
         return false;
     }
     const signout = async () => {
+
+        await api.logout(token);
         setUser(null);
-        setTokenInBrowser('');
+        //setTokenInBrowser('');
         setJobs([]);
-        // await api.logout();
     }
 
     return (
-        <AuthContext.Provider value={{ user, signin, signout, register, jobs, getJobsList, addJob, removeJob, state, getStates }}>
+        <AuthContext.Provider value={{ user, signin, signout, register, uploadImage, jobs, getJobsList, userJobs, getUserJobsList, addJob, subscribeToJob, removeJob, state, getStates }}>
             {children}
         </AuthContext.Provider>
     )

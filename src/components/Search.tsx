@@ -2,7 +2,7 @@ import { ChangeEvent } from "react";
 import { StateSelect } from "./StateSelect";
 import './Search.css';
 
-export const Search = ({ setSearchFilter, setStateSelected }: { setSearchFilter: (filter: string) => void, setStateSelected: (selected: number | null) => void }) => {
+export const Search = ({ setSearchFilter, setStateSelected }: { setSearchFilter: (filter: string) => void, setStateSelected: (selected: { id: number | null, name: string | null }) => void }) => {
 
     //:
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {

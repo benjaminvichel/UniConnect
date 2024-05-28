@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.homeContainer {
+    /*background-image: url('./../../assets/2020-DIA-biblio-2-1.jpg');*/
+    background-size: cover;
+    background-position: center;
+}
+
+
+.homeApp {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.homeTitle {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.homeTitle h1 {
+    margin-left: 50px;
+    color: rgb(17, 17, 71);
+}
+
+.homeContent1 {
+    height: 500px;
+    width: 100%;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./../../assets/md2017_10_08-185300.jpg');
+    background-size: cover;
+    background-position: center;
+    border: 2px solid black;
+}
+
+.homeContent1_textContent {
+    height: 50%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.homeContent1_textContent_text,
+.homeContent1_textContent_link {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.homeContent1_textContent_text {
+    margin-left: 50px;
+    /* Cor branca com 50% de opacidade */
+    /* Fundo branco semitransparente */
+}
+
+.homeContent1_textContent_text p {
+    word-wrap: break-word;
+    color: #fff;
+    font-size: 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.homeContent1_textContent_link {}
+
+.homeContent1_textContent_link a {
+    color: #fff;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px 30px;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: blue;
+}
+
+.homeContent1_textContent_link a:hover {
+    background-color: rgb(215, 215, 225);
+    color: blue;
+}

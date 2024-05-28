@@ -1,12 +1,14 @@
 import { ChangeEvent, useContext } from "react"
 import { AuthContext } from "../context/auth/AuthContext"
 
-export const StateSelect = ({ setStateSelected }: { setStateSelected: (filter: number | null) => void }) => {
+export const StateSelect = ({ setStateSelected }: { setStateSelected: (filter: { id: number | null, name: string | null }) => void }) => {
     const auth = useContext(AuthContext);
 
     const handleInputChange = (e: ChangeEvent<HTMLSelectElement>) => {
-        const selectedValue = e.target.value === "" ? null : parseInt(e.target.value);
-        setStateSelected(selectedValue);
+        const selectedOption = e.target.options[e.target.selectedIndex];
+        const selectedValue = selectedOption.value === "" ? null : parseInt(selectedOption.value);
+        const selectedName = selectedOption.value === "" ? null : selectedOption.text;
+        setStateSelected({ id: selectedValue, name: selectedName });
     };
     return (
         <div>

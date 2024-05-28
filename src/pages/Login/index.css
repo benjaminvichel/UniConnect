@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.loginContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('./../../assets/2020-DIA-biblio-2-1.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.appLogin {
+    background-color: rgb(110, 102, 102);
+    width: 450px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 40px;
+    border-radius: 10px;
+    background-color: transparent;
+    backdrop-filter: blur(110px);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+}
+
+.appLogin h1 {
+    text-align: center;
+    font-size: 30px;
+    color: white;
+}
+
+.login_input {
+    width: 100%;
+    height: 50px;
+    margin: 30px auto;
+}
+
+.login_input input {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    font-size: 16px;
+    color: aliceblue;
+    padding: 20px 25px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+}
+
+.login_input input::placeholder {
+    color: white;
+}
+
+.login_forgotPassword {
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+}
+
+.login_forgotPassword .login_forgotPasswordLink {
+    color: #fff;
+}
+
+.login_forgotPassword .login_forgotPasswordLink:hover {
+    text-decoration: underline;
+}
+
+.login_button {
+    text-align: center;
+    width: 100%;
+    height: 50px;
+}
+
+.login_button button {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+}
+
+.login_register {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_register p {
+    color: #fff;
+
+}
+
+.login_registerLink {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.login_registerLink:hover {
+    text-decoration: underline;
+    color: #fff;
+}

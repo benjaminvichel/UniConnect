@@ -16,14 +16,22 @@
     background-color: white;
     color: black;
     padding: 10px 20px;
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 10px;
     font-size: 20px;
     box-sizing: border-box;
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-bottom: 10px;
+    margin-top: 15px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
+
+.privateJobsForm button:hover {
+    background-color: rgb(214, 204, 204);
+    border: 1px solid black;
+}
+
 
 .jobsForm button:hover {
     border: 2px solid black;

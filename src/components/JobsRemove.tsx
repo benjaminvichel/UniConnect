@@ -12,7 +12,7 @@ export const JobsRemove = ({ jobId }: { jobId: number }) => {
 
     return (
         <div>
-            <button onClick={removeJob}>X</button>
+            <button onClick={removeJob}>Deletar Job</button>
         </div>
     )
 }

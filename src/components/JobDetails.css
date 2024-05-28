@@ -1,0 +1,218 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.jobDetailsContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.jobApp {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+    background-color: rgb(225, 225, 241);
+}
+
+.job_jobRemove {
+    margin-top: 10px;
+}
+
+.job-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.job-info {
+    width: 50%;
+    height: 90%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+}
+
+.job-info_title_date {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.jobDetails_separatorLine {
+    border-bottom: 1px solid #ccc;
+    margin: 10px;
+}
+
+.jobDetailsContainer,
+.jobApp,
+.job-info,
+.jobDetailsTitle,
+.jobDetailsDate,
+.jobDetailsPromoter,
+.jobDetailsSalary,
+.jobDetailsWorkstyle,
+.jobDetailsEmploymentType,
+.jobDetailsCity,
+.jobDetailsState,
+.jobDetailsText,
+.jobDetailsDescription,
+.jobDetailsSubscribe {
+    margin-bottom: 10px;
+}
+
+.jobDetailsTitle p,
+.jobDetailsSalary p,
+.jobDetailsEmploymentType p,
+.jobDetailsPromoter p,
+.jobDetailsState p,
+.jobDetailsText p,
+.jobDetailsWorkstyle p,
+.jobDetailsCity p,
+.jobDetailsDescription p {
+    margin-left: 10px;
+}
+
+.jobDetailsTitle {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.jobDetailsDate {
+    font-style: italic;
+    color: #666;
+    margin-right: 20px;
+}
+
+.jobDetailsPromoter {}
+
+.jobDetailsSalary {}
+
+.jobDetailsWorkstyle {}
+
+.jobDetailsEmploymentType {}
+
+.job-info_city_state {
+    display: flex;
+}
+
+.jobDetailsCity {
+    margin-right: 5px;
+}
+
+.jobDetailsState {
+    margin-left: 5px;
+}
+
+.jobDetailsSubscribe {
+    display: flex;
+    justify-content: start;
+    margin-left: 10px;
+    height: 90px;
+}
+
+.jobDetailsSubscribe button {
+    border: 1px solid black;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 1);
+    width: 200px;
+    border-radius: 40px;
+    background-color: rgb(13, 13, 133);
+    color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.jobDetailsSubscribe button:hover {
+    background-color: #fff;
+    color: rgb(13, 13, 133);
+}
+
+.jobDetails_text_and_description-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+
+.jobDetails_text_and_description {
+    display: flex;
+}
+
+.jobDetailsText,
+.jobDetailsDescription {
+    padding: 5px;
+    margin-left: 10px;
+    position: relative;
+    display: inline-block;
+    /* Para garantir que ocupem apenas o espaço necessário */
+}
+
+.jobDetailsText a,
+.jobDetailsDescription a {
+    color: black
+}
+
+.jobDetailsText a:hover,
+.jobDetailsDescription a:hover {
+    color: rgb(63, 78, 125)
+}
+
+.jobDetailsText::after,
+.jobDetailsDescription::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0%;
+    height: 3px;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: width 0.3s ease-in-out;
+    /* Adicionando uma transição suave */
+}
+
+.jobDetailsText:hover::after,
+.jobDetailsDescription:hover::after {
+    width: 100%;
+    /* Tornando a linha mais forte quando o link é hover */
+}
+
+.jobDetailsText.clicked::after,
+.jobDetailsDescription.clicked::after {
+    width: 100%;
+    /* Tornando a linha mais forte quando o link é clicado */
+}
+
+
+
+.job_jobRemove {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.job_jobRemove button {
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+.jobDetails_displayText,
+.jobDetails_displayDescription {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.jobDetails_displayText p,
+.jobDetails_displayDescription p {
+    height: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
