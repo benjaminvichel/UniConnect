@@ -7,7 +7,6 @@
 }
 
 .jobsFormApp {
-
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -16,17 +15,19 @@
 }
 
 .jobsForm_jobsForm {
-    background-color: rgb(148, 206, 222);
+    background-color: rgb(163, 169, 179);
     border: 2px solid black;
     height: 100vh;
     width: 80%;
-    border-radius: 10px;
     display: flex;
     flex-direction: column;
 }
 
 .jobsForm_jobsForm h2 {
-    text-align: center;
+    text-align: start;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-left: 5px;
 }
 
 .jobsForm_form {
@@ -59,7 +60,6 @@
 }
 
 .jobsForm_formContainer_1City_state {
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -71,18 +71,16 @@
 .form_descriptionTextarea,
 .form_promoterTextarea,
 .form_buttonSubmit {
-
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    margin-bottom: 5px;
 }
 
 .form_titleInput input {
     padding: 8px 10px;
     border: 1px solid black;
-    border-radius: 7px;
     font-size: 30px;
 }
 
@@ -96,26 +94,29 @@
 .form_workstyleSelect select {
     padding: 8px 30px;
     border: 1px solid black;
-    border-radius: 7px;
     font-size: 17px;
     cursor: pointer;
     width: 200px;
     margin-bottom: 5px;
 }
+
 
 .form_employmentSelect select {
     padding: 8px 30px;
     font-size: 17px;
     border: 1px solid black;
-    border-radius: 7px;
     cursor: pointer;
     width: 200px;
     margin-bottom: 5px;
 }
 
+.form_descriptionTextarea {
+    height: 70%;
+}
+
 .form_descriptionTextarea textarea {
-    width: 80%;
-    height: 400px;
+    width: 95%;
+    height: 100%;
     font-size: 30px;
     border: 1px solid black;
 }
@@ -125,7 +126,6 @@
     height: 50px;
     font-size: 25px;
     border: 1px solid black;
-    border-radius: 7px;
     outline: black;
 }
 
@@ -133,9 +133,9 @@
     width: 30%;
     height: 30px;
     font-size: 15px;
-    border-radius: 7px;
     border: 1px solid black;
     width: 150px;
+    margin-bottom: 5px;
 
 }
 
@@ -149,20 +149,168 @@ input[type=number]::-webkit-outer-spin-button {
     width: 300px;
     height: 35px;
     font-size: 20px;
-    border-radius: 7px;
     border: 1px solid black;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 .form_stateSelect select {
     width: 200px;
     font-size: 17px;
     border: 1px solid black;
-    border-radius: 4px;
     cursor: pointer;
+    margin-bottom: 5px;
 }
 
 .form_buttonSubmit button {
-    border-radius: 4px;
     border: 1px solid black;
+}
+
+@media(max-width:1200px) {}
+
+
+.jobsForm_formContainer_1Title,
+.form_titleInput,
+.jobsForm_formContainer_1workStyle,
+.form_workstyleSelect,
+.form_employmentSelect,
+.jobsForm_formContainer_1City_state,
+.form_cityInput,
+.form_stateSelect {
+    width: 100%;
+}
+
+.form_titleInput,
+.form_workstyleSelect,
+.form_employmentSelect {
+    text-align: start;
+}
+
+.form_titleInput input,
+.form_workstyleSelect select,
+.form_employmentSelect select,
+.form_salaryInput input,
+.form_cityInput input,
+.form_stateSelect select {
+    width: 60%;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.form_titleInput input::placeholder,
+.form_cityInput input::placeholder,
+.form_promoterTextarea textarea::placeholder,
+.form_descriptionTextarea textarea::placeholder {
+    font-weight: bold;
+}
+
+.form_titleInput {
+    margin-bottom: 5px;
+}
+
+.form_promoterTextarea {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.form_promoterTextarea textarea {
+    width: 100%;
+}
+
+.form_descriptionTextarea {
+    display: flex;
+    justify-content: start;
+}
+
+.form_descriptionTextarea textarea {
+    width: 100%;
+}
+
+@media(max-width:800px) {}
+
+@media(max-width:450px) {
+
+
+    .form_titleInput,
+    .form_workstyleSelect,
+    .form_employmentSelect,
+    .form_salaryInput {
+        text-align: start;
+        width: 100%;
+    }
+
+    .form_titleInput input,
+    .form_workstyleSelect select,
+    .form_employmentSelect select,
+    .form_salaryInput input,
+    .form_cityInput input,
+    .form_stateSelect select {
+        width: 60%;
+        padding: 7px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .form_titleInput input::placeholder,
+    .form_cityInput input::placeholder,
+    .form_promoterTextarea textarea::placeholder,
+    .form_descriptionTextarea textarea::placeholder {
+        font-weight: bold;
+    }
+
+    .jobsForm_formContainer_1Title {
+        width: 100%;
+        text-align: start;
+    }
+
+
+
+    .form_titleInput {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .jobsForm_formContainer_1workStyle {
+        width: 100%;
+    }
+
+    .jobsForm_formContainer_1City_state {
+        width: 100%;
+    }
+
+    .form_cityInput {
+
+        text-align: start;
+        margin-bottom: 0px;
+        width: 100%;
+    }
+
+    .form_promoterTextarea {
+        width: 100%;
+        margin-bottom: 5px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+
+    .form_promoterTextarea textarea {
+        width: 100%;
+        font-size: 15px;
+    }
+
+    .form_descriptionTextarea {
+        margin-bottom: 5px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+
+    .form_descriptionTextarea textarea {
+        font-size: 15px;
+        width: 100%;
+    }
+
+    .form_buttonSubmit {
+        margin-bottom: 5px;
+    }
 }

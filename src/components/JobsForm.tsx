@@ -56,7 +56,7 @@ export const JobsForm = () => {
                 <form className='jobsForm_form' onSubmit={handleSubmit}>
                     <div className='jobsForm_formContainer_1'>
                         <div className='jobsForm_formContainer_1Title'>
-                            <div className='form_titleInput'><input value={title} type="text" placeholder='digite o title' onChange={(e) => setTitle(e.target.value)} /></div></div>
+                            <div className='form_titleInput'><input value={title} type="text" placeholder='Digite o title' onChange={(e) => setTitle(e.target.value)} /></div></div>
                         <div className='jobsForm_formContainer_1workStyle'>
                             <div className='form_workstyleSelect'>
                                 <select value={workStyle} onChange={(e) => setWorkStyle(e.target.value as WorkStyle)}>
@@ -75,15 +75,22 @@ export const JobsForm = () => {
                                     setSalary(isNaN(value) ? 0 : value); // If input is NaN, set salary to 0
                                 }} required /></div>
                             </div></div>
-                        <div className='jobsForm_formContainer_1City_state '> <div className='form_cityInput'><input value={city} type="text" placeholder='Cidade da vaga' onChange={(e) => setCity(e.target.value)} required /></div>
-                            <div className='form_stateSelect'><StateSelect setStateSelected={setStateSelected} /></div></div>
+                        <div className='jobsForm_formContainer_1City_state '>
+                            <div className='form_cityInput'>
+                                <input value={city} type="text" placeholder='Cidade da vaga' onChange={(e) => setCity(e.target.value)} required />
+                            </div>
+                            <div className='form_stateSelect'>
+                                <StateSelect setStateSelected={setStateSelected} />
+                            </div>
+                        </div>
 
                     </div>
 
                     <div className='form_promoterTextarea'><textarea value={promoter} placeholder='Empresa anunciante' onChange={(e) => setPromoter(e.target.value)} required /></div>
-                    <div className='form_textTextarea'><textarea value={text} placeholder='breve resumo da vaga' onChange={(e) => setText(e.target.value)} /></div>
 
-                    <div className='form_descriptionTextarea'><textarea value={description} placeholder='descrição vaga' onChange={(e) => setDescription(e.target.value)} required /></div>
+                    {/*<div className='form_textTextarea'><textarea value={text} placeholder='Breve resumo da vaga' onChange={(e) => setText(e.target.value)} /></div> */}
+
+                    <div className='form_descriptionTextarea'><textarea value={description} placeholder='Descrição vaga' onChange={(e) => setDescription(e.target.value)} required /></div>
 
                     <div className='form_buttonSubmit'><button type='submit'>Criar Job</button></div>
 

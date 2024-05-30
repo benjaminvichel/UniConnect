@@ -40,19 +40,98 @@ header {
   flex-grow: 0.9;
   justify-content: space-between;
   align-items: center;
+
 }
 
-.container-x2 ul a {
+.horizontalBar {
+  display: flex;
+  list-style-type: none;
+}
+
+.container-x3 .menu-button {
+  display: none;
+  padding: 8px;
+}
+
+.container-x2 .horizontalBar .hideOnMobile {
   margin-left: 30px;
+}
+
+.container-x2 .horizontalBar .hideOnMobile a:hover {
+  color: #4870e7;
+}
+
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  z-index: 999;
+  background-color: rgb(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  width: 100%;
+}
+
+.sidebar ul li {
+  width: 100%;
+  height: 50px;
+}
+
+.sidebar ul li a {
+  width: 100%;
+  height: 100%;
+  padding: 0 30px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: black;
+}
+
+.sidebar .logoutButtonVerticalBar button {
+  width: 100%;
+  height: 100%;
+  padding: 0 30px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: black;
+  border-radius: 0px;
+}
+
+.sidebar ul li a:hover,
+.sidebar .logoutButtonVerticalBar button:hover {
+  background-color: azure;
 }
 
 .container-x3 {
   display: flex;
   flex-grow: 0.01;
+  align-items: center;
+  justify-content: end;
 }
 
-.container-x3 button {
+.container-x3 .logoutButtonVerticalBar button {
   background-color: transparent;
+}
+
+.container-x3 .logoutButtonHorizontalBar button {
+  background-color: transparent;
+  color: #fff;
+}
+
+.container-x3 .logoutButtonHorizontalBar button:hover {
+  border: 1px solid white;
 }
 
 nav a {
@@ -60,3 +139,26 @@ nav a {
   display: inline-block;
   margin: 0;
 }
+
+@media(max-width:1200px) {}
+
+
+@media(max-width:800px) {
+  .container-x3 .menu-button {
+    display: flex;
+  }
+
+  .container-x3 .logoutButtonHorizontalBar button {
+    display: none;
+  }
+
+  .sidebar {
+    display: flex;
+  }
+
+  .hideOnMobile {
+    display: none;
+  }
+}
+
+@media(max-width:450px) {}
