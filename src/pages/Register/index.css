@@ -56,6 +56,10 @@
     color: white;
 }
 
+.registerInput input:hover {
+    border: 1px solid antiquewhite;
+}
+
 .register_stateSelect {
     width: 100%;
     height: auto;
@@ -105,7 +109,7 @@
 }
 
 .register_button button:hover {
-    background-color: rgb(198, 203, 203);
+    background-color: antiquewhite;
 }
 
 .register_login {
