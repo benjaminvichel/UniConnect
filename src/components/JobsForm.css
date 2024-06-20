@@ -15,7 +15,7 @@
 }
 
 .jobsForm_jobsForm {
-    background-color: rgb(163, 169, 179);
+    background-color: rgb(222, 229, 240);
     border: 2px solid black;
     height: 100vh;
     width: 80%;
@@ -78,14 +78,37 @@
     margin-bottom: 5px;
 }
 
+.form_titleInput input::placeholder,
+.form_salaryInput input::placeholder,
+.form_cityInput input::placeholder {
+    color: black;
+    text-indent: 5px;
+    font-size: 15px;
+}
+
+.form_promoterTextarea textarea::placeholder,
+.form_descriptionTextarea textarea::placeholder {
+    color: black;
+    text-indent: 10px;
+    font-size: 15px;
+}
+
+.form_workstyleSelect select,
+.form_employmentSelect select,
+.form_salaryInput input,
+.form_stateSelect select {
+    color: black;
+    text-indent: 0px;
+    font-size: 15px;
+}
+
 .form_titleInput input {
     padding: 8px 10px;
-    border: 1px solid black;
-    font-size: 30px;
+    border: none;
+    height: 40px;
 }
 
 .form_textTextarea textarea {
-    font-size: 20px;
     width: 80%;
     height: 100px;
 
@@ -93,8 +116,7 @@
 
 .form_workstyleSelect select {
     padding: 8px 30px;
-    border: 1px solid black;
-    font-size: 17px;
+    border: none;
     cursor: pointer;
     width: 200px;
     margin-bottom: 5px;
@@ -103,8 +125,7 @@
 
 .form_employmentSelect select {
     padding: 8px 30px;
-    font-size: 17px;
-    border: 1px solid black;
+    border: none;
     cursor: pointer;
     width: 200px;
     margin-bottom: 5px;
@@ -117,24 +138,19 @@
 .form_descriptionTextarea textarea {
     width: 95%;
     height: 100%;
-    font-size: 30px;
-    border: 1px solid black;
+    border: none;
 }
 
 .form_promoterTextarea textarea {
     width: 50%;
     height: 50px;
-    font-size: 25px;
-    border: 1px solid black;
-    outline: black;
+    border: none;
 }
 
 .form_salaryInput input {
     width: 30%;
-    height: 30px;
-    font-size: 15px;
-    border: 1px solid black;
-    width: 150px;
+    height: 40px;
+    border: none;
     margin-bottom: 5px;
 
 }
@@ -147,22 +163,21 @@ input[type=number]::-webkit-outer-spin-button {
 
 .form_cityInput input {
     width: 300px;
-    height: 35px;
-    font-size: 20px;
-    border: 1px solid black;
+    height: 40px;
+    border: none;
     margin-bottom: 5px;
 }
 
 .form_stateSelect select {
     width: 200px;
-    font-size: 17px;
-    border: 1px solid black;
+    border: none;
     cursor: pointer;
     margin-bottom: 5px;
+    height: 40px;
 }
 
 .form_buttonSubmit button {
-    border: 1px solid black;
+    border: none;
 }
 
 @media(max-width:1200px) {}
@@ -193,15 +208,9 @@ input[type=number]::-webkit-outer-spin-button {
 .form_stateSelect select {
     width: 60%;
     padding: 10px;
-    font-size: 20px;
+    height: 40px;
 }
 
-.form_titleInput input::placeholder,
-.form_cityInput input::placeholder,
-.form_promoterTextarea textarea::placeholder,
-.form_descriptionTextarea textarea::placeholder {
-    font-weight: bold;
-}
 
 .form_titleInput {
     margin-bottom: 5px;
@@ -248,15 +257,8 @@ input[type=number]::-webkit-outer-spin-button {
         width: 60%;
         padding: 7px;
         font-size: 14px;
-        font-weight: bold;
     }
 
-    .form_titleInput input::placeholder,
-    .form_cityInput input::placeholder,
-    .form_promoterTextarea textarea::placeholder,
-    .form_descriptionTextarea textarea::placeholder {
-        font-weight: bold;
-    }
 
     .jobsForm_formContainer_1Title {
         width: 100%;

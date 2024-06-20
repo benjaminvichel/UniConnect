@@ -8,7 +8,6 @@ export const JobsForm = () => {
     const auth = useContext(AuthContext);
 
     const [title, setTitle] = useState('');
-    const [text, setText] = useState('');
     const [workStyle, setWorkStyle] = useState<WorkStyle>(WorkStyle.PRESENCIAL);
     const [employmentType, setEmploymentType] = useState<EmploymentType>(EmploymentType.TRABALHO);
     const [description, setDescription] = useState('');
@@ -21,15 +20,13 @@ export const JobsForm = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (!title || !text || !workStyle || !employmentType || !description || !promoter || !salary || !city || !stateSelected.id || !stateSelected.name) return;
-
+        if (!title || !workStyle || !employmentType || !description || !promoter || !salary || !city || !stateSelected.id || !stateSelected.name) return;
         addJob();
         resetForm();
     }
 
     const resetForm = () => {
         setTitle('');
-        setText('');
         setWorkStyle(WorkStyle.PRESENCIAL);
         setEmploymentType(EmploymentType.TRABALHO);
         setDescription('');
@@ -40,7 +37,7 @@ export const JobsForm = () => {
     }
 
     const addJob = async () => {
-        const result = await auth.addJob(title, text, workStyle, employmentType, description, promoter, salary, city, stateSelected.id, stateSelected.name);
+        const result = await auth.addJob(title, workStyle, employmentType, description, promoter, salary, city, stateSelected.id, stateSelected.name);
         if (result) {
             console.log("Adicionado ao banco de dados!");
         }
@@ -70,7 +67,7 @@ export const JobsForm = () => {
                                     <option value="TRABALHO">Trabalho</option>
                                     <option value="ESTAGIO">Estágio</option>
                                 </select>
-                                <div className='form_salaryInput'><input value={salary} type="number" placeholder='Salario da vaga' onChange={(e) => {
+                                <div className='form_salaryInput'><input value={salary === 0 ? '' : salary} type="number" placeholder='Salario da vaga' onChange={(e) => {
                                     const value = parseInt(e.target.value);
                                     setSalary(isNaN(value) ? 0 : value); // If input is NaN, set salary to 0
                                 }} required /></div>

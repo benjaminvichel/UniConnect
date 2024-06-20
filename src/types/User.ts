@@ -1,4 +1,10 @@
 import { State } from "./State";
+
+export enum role {
+    ADMIN = "ADMIN",
+    USER = "USER"
+}
+
 export type User = {
     id: number;
     name: string;
@@ -9,4 +15,5 @@ export type User = {
     city: string;
     state: State;
     profilePicture: Uint8Array | null;
+    role: role;
 }

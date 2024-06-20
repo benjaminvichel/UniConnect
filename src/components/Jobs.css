@@ -14,20 +14,21 @@
 
 .jobLink {
     width: 300px;
-    height: 300px;
-    border: 1px solid black;
+    height: 250px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: start;
     border-radius: 7px;
     margin-right: 20px;
     margin-left: 20px;
     margin-bottom: 20px;
     text-decoration: none;
+    background-color: #f0f0f0;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .jobLink:hover {
-    background-color: #f0f0f0;
+    background-color: #b0c4de;
 }
 
 .job_title,
@@ -41,6 +42,8 @@
     word-wrap: break-word;
     align-items: start;
     border-radius: 7px;
+    color: black;
+    margin-bottom: 25px;
 }
 
 .job_title h3,

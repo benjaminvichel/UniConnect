@@ -117,6 +117,7 @@
     justify-content: start;
     margin-left: 10px;
     height: 90px;
+    border: none;
 }
 
 .jobDetailsSubscribe button {

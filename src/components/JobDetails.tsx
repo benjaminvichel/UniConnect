@@ -16,8 +16,8 @@ export const JobDetails = () => {
 
     useEffect(() => {
         // Ao montar o componente, garantir que apenas o "Resumo da Vaga" esteja expandido e o "Descrição da Vaga" recolhido
-        setIsTextExpanded(true);
-        setIsDescriptionExpanded(false);
+        setIsTextExpanded(false);
+        setIsDescriptionExpanded(true);
     }, []);
 
     const handleSubscribe = () => {
@@ -26,15 +26,15 @@ export const JobDetails = () => {
         }
     }
 
-    const handleTextClick = () => {
-        setIsTextExpanded(true);
-        setIsDescriptionExpanded(false);
+    // const handleTextClick = () => {
+    //     setIsTextExpanded(true);
+    //     setIsDescriptionExpanded(false);
 
-        const textElement = document.querySelector('.jobDetailsText');
-        const descriptionElement = document.querySelector('.jobDetailsDescription');
-        textElement?.classList.add('clicked');
-        descriptionElement?.classList.remove('clicked');
-    }
+    //     const textElement = document.querySelector('.jobDetailsText');
+    //     const descriptionElement = document.querySelector('.jobDetailsDescription');
+    //     textElement?.classList.add('clicked');
+    //     descriptionElement?.classList.remove('clicked');
+    // }
 
     const handleDescriptionClick = () => {
         setIsDescriptionExpanded(true);
@@ -71,11 +71,11 @@ export const JobDetails = () => {
                             <div className="jobDetails_separatorLine"></div>
                             <div className="jobDetails_text_and_description-container">
                                 <div className="jobDetails_text_and_description">
-                                    <div className="jobDetailsText">
+                                    {/* <div className="jobDetailsText">
                                         <a href="#" onClick={handleTextClick}>
                                             Resumo da Vaga
                                         </a>
-                                    </div>
+                                    </div> */}
                                     <div className="jobDetailsDescription">
                                         <a href="#" onClick={handleDescriptionClick}>
                                             Descrição da Vaga

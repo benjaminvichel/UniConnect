@@ -1,8 +1,7 @@
 
 import './App.css'
 import { Route, Routes, Link, useNavigate } from 'react-router-dom'
-import { Private } from './pages/Private';
-import { Home } from './pages/Home.tsx/';
+import { Home } from './pages/Home';
 import { RequireAuth } from './context/auth/RequiredAuth';
 import { useContext, useState } from 'react';
 import { AuthContext } from './context/auth/AuthContext';
@@ -14,6 +13,9 @@ import { Login } from './pages/Login';
 import { JobDetails } from './components/JobDetails';
 import { Applications } from './pages/Applications';
 import { FaBars } from "react-icons/fa";
+import { Works } from './pages/Works/index';
+import { Admin } from './pages/Admin';
+import { role } from './types/User';
 
 function App() {
   const auth = useContext(AuthContext);
@@ -40,9 +42,12 @@ function App() {
             <div className="container-x2">
               {/*nav horizontal*/}
               <ul className='horizontalBar'>
-                <li className='hideOnMobile'><Link to="/UniConnect/Private">Private</Link></li>
+                <li className='hideOnMobile'><Link to="/UniConnect/Works">Works</Link></li>
                 <li className='hideOnMobile'><Link to={"/UniConnect/Curriculum"}>Curriculo</Link></li>
                 <li className='hideOnMobile'><Link to={"/UniConnect/Applications"}>Candidaturas</Link></li>
+                {auth.user?.role === role.ADMIN && (
+                  <li className='hideOnMobile'><Link to="/UniConnect/Admin">Admin</Link></li>
+                )}
               </ul>
 
 
@@ -54,9 +59,11 @@ function App() {
                   <div className="sidebar">
                     <ul>
                       <li onClick={hideSidebar}><a href="#">Fechar</a></li>
-                      <li onClick={hideSidebar}><Link to="/UniConnect/Private">Private</Link></li>
+                      <li onClick={hideSidebar}><Link to="/UniConnect/Works">Works</Link></li>
                       <li onClick={hideSidebar}><Link to="/UniConnect/Curriculum">Curriculo</Link></li>
                       <li onClick={hideSidebar}><Link to="/UniConnect/Applications">Candidaturas</Link></li>
+                      {auth.user?.role === role.ADMIN &&
+                        (<li onClick={hideSidebar}><Link to="/UniConnect/Admin">Admin</Link></li>)}
                       <li className='logoutButtonVerticalBar'>{auth.user && <button onClick={handleLogout}>Sair</button>}</li>
                     </ul>
                   </div>
@@ -70,7 +77,7 @@ function App() {
       <hr />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/UniConnect/Private" element={<RequireAuth><Private /></RequireAuth>} />
+        <Route path="/UniConnect/Works" element={<RequireAuth><Works /></RequireAuth>} />
         <Route path="/UniConnect/Login" element={<Login />} />
         <Route path="/UniConnect/Register" element={<Register />} />
         <Route path="/UniConnect/ForgotPassword" element={<ForgotPassword />} />
@@ -78,6 +85,7 @@ function App() {
         <Route path='/UniConnect/JobsForm' element={<JobsForm />}></Route>
         <Route path="/UniConnect/JobDetails/:jobId" element={<JobDetails />} />
         <Route path="/UniConnect/Applications" element={<RequireAuth><Applications /></RequireAuth>} />
+        <Route path="/UniConnect/Admin" element={<RequireAuth><Admin /></RequireAuth>} />
         {/* Rota padrão para a página inicial */}
         <Route path="*" element={<Home />} />
       </Routes>
