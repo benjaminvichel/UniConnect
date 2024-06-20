@@ -2,13 +2,14 @@
 import { useEffect, useState } from "react"
 import { AuthContext } from "./AuthContext"
 import { useApi } from "../../hooks/useApi";
-import { User } from "../../types/User";
+import { User, role } from "../../types/User";
 import { EmploymentType, Job, WorkStyle } from "../../types/Job";
 import { State } from "../../types/State";
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
     const [user, setUser] = useState<User | null>(null);
+    const [pendingUsers, setPendingUsers] = useState<User[] | null>(null);
     const [jobs, setJobs] = useState<Job[] | null>([]);
     const [userJobs, setUserJobs] = useState<Job[] | null>([]);
     const [state, setState] = useState<State[] | null>([]);
@@ -54,19 +55,62 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
         }
         return false;
     };
-    const uploadImage = async (image: File): Promise<boolean> => {
+
+    const pendingUser = async (): Promise<User[] | null> => {
+        try {
+            const data = await api.pendingUser(token);
+            if (data && data.user) {
+                setPendingUsers(data.user); // Definir a lista de usuários no estado
+                return data.user; // Retornar a lista de usuários
+            }
+            return null;
+        } catch (error) {
+            console.error('Erro ao recuperar usuários pendentes:', error);
+            return null;
+        }
+    }
+    const ApprovedOrDeniedUsers = async (id: number, role: role, approvalStatus: string): Promise<boolean> => {
+        try {
+            const data = await api.ApprovedOrDeniedUsers(id, role, approvalStatus, token);
+            if (data) {
+                return true;
+            }
+            return false;
+        } catch (error) {
+            console.error('Erro ao recuperar usuários pendentes:', error);
+            return false;
+        }
+    }
+    const uploadPDF = async (PDF: File): Promise<boolean> => {
         try {
             // Chamar a função da API para fazer o upload da imagem
-            await api.uploadImage(image, token);
+            await api.uploadPDF(PDF, token);
             // Se o upload for bem-sucedido, retornar true
             return true;
         } catch (error) {
             // Se houver algum erro durante o upload, retornar false
-            console.error('Erro ao enviar imagem:', error);
+            console.error('Erro AuthProvider:', error);
             return false;
         }
 
     }
+    const getPDF = async (): Promise<Blob | null> => {
+        try {
+            const pdfBlob = await api.getPDF(token);
+
+            // Verifica se os dados do Blob estão corretos
+            console.log('Blob recebido:', pdfBlob);
+
+            if (pdfBlob) {
+                return pdfBlob;
+            }
+            return null;
+        } catch (error) {
+            // Em caso de erro, registra no console
+            console.error('Erro ao obter PDF authProvider:', error);
+            return null;
+        }
+    };
     const getJobsList = async (): Promise<Job[] | null> => {
         try {
             const data = await api.getJobsList(token);
@@ -97,8 +141,8 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
         }
     }
 
-    const addJob = async (title: string, text: string, workStyle: WorkStyle, employmentType: EmploymentType, description: string, promoter: string, salary: number, city: string, stateId: number | null, stateName: string | null) => {
-        const data = await api.addJob(title, text, workStyle, employmentType, description, promoter, salary, city, stateId, stateName, token);
+    const addJob = async (title: string, workStyle: WorkStyle, employmentType: EmploymentType, description: string, promoter: string, salary: number, city: string, stateId: number | null, stateName: string | null) => {
+        const data = await api.addJob(title, workStyle, employmentType, description, promoter, salary, city, stateId, stateName, token);
         if (data) {
             console.log(data);
             return true;
@@ -143,7 +187,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ user, signin, signout, register, uploadImage, jobs, getJobsList, userJobs, getUserJobsList, addJob, subscribeToJob, removeJob, state, getStates }}>
+        <AuthContext.Provider value={{ user, signin, signout, register, pendingUser, pendingUsers, ApprovedOrDeniedUsers, uploadPDF, getPDF, jobs, getJobsList, userJobs, getUserJobsList, addJob, subscribeToJob, removeJob, state, getStates }}>
             {children}
         </AuthContext.Provider>
     )
