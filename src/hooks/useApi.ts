@@ -1,6 +1,7 @@
 //Aqui chamo os dados do backEnd
 import axios from "axios";
 import { EmploymentType, WorkStyle } from "../types/Job";
+import { role } from "../types/User";
 
 
 const api = axios.create({
@@ -16,7 +17,7 @@ export const useApi = () => ({
     // Métodos para a back-end API
     validateToken: async (token: string) => {//working
         // return {
-        //     user: { id: 3, name: 'José', email: 'jose@gmail.com', jobs: [1, 3] }
+        //     user: { id: 3, name: 'José', email: 'jose@gmail.com', role: 'ADMIN' }
         // }
         const headers = {
             Authorization: `${token}`,
@@ -39,15 +40,6 @@ export const useApi = () => ({
         console.log(response.data);
         return response.data;
     },
-
-    uploadImage: async (image: File, token: string) => {
-        const headers = {
-            Authorization: `${token}`,
-            'Content-Type': 'application/json', // Especificando o tipo de conteúdo como JSON
-        };
-        const response = await api.post('/auth/profilepicture', { image }, { headers });
-        return response.data;
-    },
     //working
     register: async (name: string, email: string, password: string, phone: string, address: string, city: string, stateId: number) => {
         // return {
@@ -57,6 +49,39 @@ export const useApi = () => ({
         const response = await api.post('/auth/signup', { name, email, password, phone, address, city, stateId });
         return response.data;
     },
+    pendingUser: async (token: string) => {
+        const headers = {
+            Authorization: `${token}`,
+            'Content-Type': 'application/json', // Especificando o tipo de conteúdo como JSON
+        };
+        const response = await api.get('/auth/pendinguser', { headers });
+        return { user: response.data };
+    },
+    ApprovedOrDeniedUsers: async (id: number, role: role, approvalStatus: string, token: string) => {
+        const headers = {
+            Authorization: `${token}`,
+            'Content-Type': 'application/json', // Especificando o tipo de conteúdo como JSON
+        };
+        const response = await api.post('/auth/pendinguser', { id, role, approvalStatus, token }, { headers });
+        return response.data;
+    },
+    uploadPDF: async (PDF: File, token: string) => {
+        const headers = {
+            Authorization: `${token}`,
+            'Content-Type': 'multipart/form-data', // Especificando o tipo de conteúdo como JSON
+        };
+        const response = await api.post('/auth/cv', { PDF }, { headers });
+        return response.data;
+    },
+
+    getPDF: async (token: string) => {
+        const headers = {
+            Authorization: `${token}`,
+        };
+        const response = await api.get('/auth/cv', { headers, responseType: 'arraybuffer' });
+        return new Blob([response.data]);
+    },
+
     //working
     getJobsList: async (token: string) => {
         // return {
@@ -124,13 +149,13 @@ export const useApi = () => ({
         return { jobs: response.data };
     },
     //working
-    addJob: async (title: string, text: string, workStyle: WorkStyle, employmentType: EmploymentType, description: string, promoter: string, salary: number, city: string, stateId: number | null, stateName: string | null, token: string) => {
+    addJob: async (title: string, workStyle: WorkStyle, employmentType: EmploymentType, description: string, promoter: string, salary: number, city: string, stateId: number | null, stateName: string | null, token: string) => {
         // return true;
         const headers = {
             Authorization: `${token}`,
             'Content-Type': 'application/json', // Especificando o tipo de conteúdo como JSON
         };
-        const response = await api.post('/job', { title, text, workStyle, employmentType, description, promoter, salary, city, stateId, stateName }, { headers })
+        const response = await api.post('/job/new', { title, workStyle, employmentType, description, promoter, salary, city, stateId, stateName }, { headers })
         return response.data;
     },
 
