@@ -131,7 +131,7 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
             const data = await api.getUserJobsList(token);
             if (data.jobs) {
                 console.log(data.jobs);
-                setUserJobs(data.jobs); // Substitui os dados existentes pelos novos dados
+                setUserJobs(data.jobs);
                 return data.jobs;
             }
             return null;

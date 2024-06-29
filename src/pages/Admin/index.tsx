@@ -37,7 +37,7 @@ export const Admin = () => {
 
     return (
         <div>
-            <h1>Admin Page</h1>
+            <h2>Admin Page</h2>
             <div>
                 {auth.pendingUsers && (
                     <ul>
